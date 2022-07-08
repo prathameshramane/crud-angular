@@ -1,0 +1,36 @@
+<p>posts works!</p>
+
+<form #f="ngForm" (ngSubmit)="addNewPost(f.value)">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" ngModel />
+    </div>
+    <button type="submit">Add</button>
+</form>
+
+<table border="1">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts">
+            <td>{{post.id}}</td>
+            <td>{{post.name}}</td>
+            <td>
+                <button (click)="deletePost(post)">Delete</button>
+            </td>
+            <td>
+                <form #f="ngForm" (ngSubmit)="updatePost(post, f.value)">
+                    <div>
+                        <label>Name</label>
+                        <input type="text" name="name" ngModel />
+                    </div>
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
